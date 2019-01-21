@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop_display',
-    'workorder_app',
+    'workorder_app.apps.WorkorderAppConfig',
 ]
 
 MIDDLEWARE = [
