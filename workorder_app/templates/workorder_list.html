@@ -10,33 +10,33 @@
     </head>
     <body>
         <div class="d-flex justify-content-center">
-            <img class="mr-3 feature-thumbnail" src="{% static "images/dogwithhat.jpg" %}" width="100px" height="100px">
-            <span class="title">Work Orders</span>
+            {% comment %} <img class="mr-3 feature-thumbnail" src="{% static "images/dogwithhat.jpg" %}" width="100px" height="100px"> {% endcomment %}
+            <span class="title">Upcoming Work Orders</span>
         </div>
         {% if workorders %}
-            <div class="media featured-project">        
-                <div class="media-body container-fluid featured-project-table">
-                    <ul>
-                        <li>
-                            <div class="row">
-                                <div class="col">Work Order</div>
-                                <div class="col">Description</div>
-                                <div class="col">Size</div>
-                                <div class="col">Due Date</div>
-                            </div>
-                        </li>
-                    {% for wo in workorders %}
-                        <li>
-                            <div class="row project-row">
-                                <div class="col">{{wo.workorder_number}}</div>
-                                <div class="col">{{wo.machine_type}}</div>
-                                <div class="col">{{wo.machine_size}}</div>
-                                <div class="col">{{wo.due_date}}</div>
-                            </div>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                </div>
+            <div class="media">        
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Work Order</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Due Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for wo in workorders %}
+                        <tr {% if wo.is_urgent %}class="table-danger"{% endif %}>
+                            <th scope="row">{{wo.index}}</th>
+                            <td>{{wo.workorder_number}}</td>
+                            <td>{{wo.machine_type}}</td>
+                            <td>{{wo.machine_size}}</td>
+                            <td>{{wo.due_date}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         {% else %}
             <p>No work orders configured. Configure work orders in the admin console.</p>
