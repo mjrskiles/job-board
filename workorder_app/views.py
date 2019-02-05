@@ -31,11 +31,12 @@ def index(request):
     num_pages = paginator.num_pages
 
     context = {
-        'workorders' : paginated_workorders,
+        'workorders'       : paginated_workorders,
         'current_page_num' : page,
-        'total_num_pages' : num_pages,
-        'next_page' : get_next_page(page, num_pages),
-        'refresh_rate' : config['REFRESH_RATE']
+        'total_num_pages'  : num_pages,
+        'next_page'        : get_next_page(page, num_pages),
+        'refresh_rate'     : config['REFRESH_RATE'],
+        'debug'            : config['DEBUG']
     }
 
     if request.GET.get('ajax') == 'true':

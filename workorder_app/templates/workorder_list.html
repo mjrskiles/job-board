@@ -11,12 +11,15 @@
         <script src="{% static 'js/workorder_list.js' %}"></script>
     </head>
     <body>
-        <div id="top-title" class="title-block">
-            <div class="title">Work Orders</div>
-	    <div class="title-controls">
-                <button onClick="fullScreen()">Fullscreen</button>
-		<button onClick="togglePaging()">Page Toggle</button>
-	    </div>
+        <div id="top-title" class="title-block row">
+            <div class="col-3"></div>
+            <div class="title col-6 align-baseline">Work Orders</div>
+            <div class="title-controls col-3">
+                <div class="button-wrapper align-baseline">
+                    {% if debug %}<button class="btn btn-outline-secondary" onClick="togglePaging()">Page Toggle</button>{% endif %}
+                    <button class="btn btn-outline-primary" onClick="fullScreen()">Fullscreen</button>
+                </div>
+            </div>
         </div>
         <div id="workorder-table" class="table-container">
         {% include "table.html" %}

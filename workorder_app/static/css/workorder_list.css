@@ -11,9 +11,8 @@ html, body {
     height: 15%;
 }
 
-.title-controls {
-    float: right;
-    display: inline-block;
+.button-wrapper {
+    padding-top: 4%;
 }
 
 .table-container {
