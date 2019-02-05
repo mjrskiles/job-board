@@ -6,7 +6,7 @@
         {% endif %}>
         <thead class="thead-dark table-head">
             <tr>
-                <th scope="col" style="width: 8%;">#</th>
+                <th scope="col" class="num-col" style="width: 8%;">#</th>
                 <th scope="col" style="width: 20%;">Work Order</th>
                 <th scope="col" style="width: 44%;">Description</th>
                 <th scope="col" style="width: 8%;">Size</th>
@@ -16,7 +16,7 @@
         <tbody class="table-body">
             {% for wo in workorders %}
             <tr class="table-row {% if wo.is_urgent %} table-danger {% endif %}">
-                <th scope="row">{{wo.index}}</th>
+                <th scope="row" class="num-col">{{wo.index}}</th>
                 <td>{{wo.workorder_number}}</td>
                 <td>{{wo.machine_type}}</td>
                 <td>{{wo.machine_size}}</td>

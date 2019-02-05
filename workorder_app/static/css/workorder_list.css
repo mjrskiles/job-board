@@ -38,3 +38,7 @@ html, body {
     height: 25%;
     font-size: 3em;
 }
+
+.num-col {
+    text-align: center;
+}
