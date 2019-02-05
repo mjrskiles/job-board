@@ -1,0 +1,30 @@
+{% if workorders %}        
+    <table id="table" class="table table-striped h-100" 
+        {% if next_page and refresh_rate %}
+          data-next-page="{{next_page}}" 
+          data-refresh-rate="{{refresh_rate}}"
+        {% endif %}>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="width: 8%;">#</th>
+                <th scope="col" style="width: 14%;">Work Order</th>
+                <th scope="col" style="width: 50%;">Description</th>
+                <th scope="col" style="width: 8%;">Size</th>
+                <th scope="col" style="width: 20%;">Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for wo in workorders %}
+            <tr {% if wo.is_urgent %}class="table-danger"{% endif %}>
+                <th scope="row">{{wo.index}}</th>
+                <td>{{wo.workorder_number}}</td>
+                <td>{{wo.machine_type}}</td>
+                <td>{{wo.machine_size}}</td>
+                <td>{{wo.due_date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No work orders configured. Configure work orders in the admin console.</p>
+{% endif %}

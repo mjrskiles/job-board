@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop_display',
     'workorder_app.apps.WorkorderAppConfig',
+    'jquery'
 ]
 
 MIDDLEWARE = [
