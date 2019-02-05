@@ -5,7 +5,7 @@ $(document).ready(function() {
     
     function loadNext() {
         var nextPage = $(TABLE_SELECTOR).attr('data-next-page');
-        if (nextPage) {
+        if (nextPage && shouldPage) {
             $.get('?ajax=true&page=' + nextPage, function(data) {
                 var tableContainer = $(TABLE_CONTAINER_SELECTOR);
                 tableContainer.empty();
@@ -25,6 +25,7 @@ $(document).ready(function() {
 /*
  * Listeners
  */
+var shouldPage = true;
 
 function fullScreen() {
     var el = document.documentElement,
@@ -35,4 +36,8 @@ function fullScreen() {
     ;
 
     rfs.call(el);
+}
+
+function togglePaging() {
+    shouldPage = !shouldPage;
 }

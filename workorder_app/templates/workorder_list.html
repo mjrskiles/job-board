@@ -11,9 +11,12 @@
         <script src="{% static 'js/workorder_list.js' %}"></script>
     </head>
     <body>
-        <div id="top-title" class="d-flex justify-content-center align-items-center title-block">
-            <span class="title">Work Orders</span>
-            <button onClick="fullScreen()"> Fullscreen</button>
+        <div id="top-title" class="title-block">
+            <div class="title">Work Orders</div>
+	    <div class="title-controls">
+                <button onClick="fullScreen()">Fullscreen</button>
+		<button onClick="togglePaging()">Page Toggle</button>
+	    </div>
         </div>
         <div id="workorder-table" class="table-container">
         {% include "table.html" %}
