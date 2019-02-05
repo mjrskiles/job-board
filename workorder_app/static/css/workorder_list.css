@@ -7,25 +7,16 @@ html, body {
     text-align: center;
 }
 
+.title-block {
+    height: 15%;
+}
+
+.table-container {
+    height: 85%;
+}
+
 .project-row {
     border-style: solid;
     border-width: 2px;
     border-color: rgb(17, 85, 161);
-}
-
-.feature-thumbnail {
-    /*float: left;*/
-}
-
-.feature-title {
-    font-size: 1.5em;
-}
-
-ul {
-    list-style-type: none;
-}
-
-li {
-    margin-top: 10px;
-    margin-bottom: 10px;
 }

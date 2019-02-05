@@ -7,7 +7,6 @@ from datetime import date
 
 from .models import WorkOrder
 from .app_config import config
-from .ajax_template import render_block_to_string
 
 def index(request):
     workorders = WorkOrder.objects.order_by('due_date')
@@ -31,7 +30,6 @@ def index(request):
 
     num_pages = paginator.num_pages
 
-    print('next page is ' + get_next_page(page, num_pages))
     context = {
         'workorders' : paginated_workorders,
         'current_page_num' : page,

@@ -95,3 +95,18 @@ At this point, the project should be ready to run. For help with django, see the
 [Django 2.0 documentation](https://docs.djangoproject.com/en/2.0/)
 
 [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
+
+--
+
+Need to write a script to install and create a virtual env.
+Goal is to be able to execute one script to prepare the environment and one to start the project
+
+---
+admin
+csi001csi001
+
+## From project directory
+
+python3 -m virtualenv env
+pip install -r requirements.txt
+python manage.py collectstatic
