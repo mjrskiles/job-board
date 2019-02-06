@@ -10,7 +10,6 @@ $(document).ready(function() {
                 var tableContainer = $(TABLE_CONTAINER_SELECTOR);
                 tableContainer.empty();
                 tableContainer.append(data);
-                console.log("Refreshed table async.")
             });
         }
         else {
@@ -26,16 +25,29 @@ $(document).ready(function() {
  * Listeners
  */
 var shouldPage = true;
+var isFullScreen = false;
 
 function fullScreen() {
-    var el = document.documentElement,
-      rfs = el.requestFullscreen
-        || el.webkitRequestFullScreen
-        || el.mozRequestFullScreen
-        || el.msRequestFullscreen 
-    ;
-
-    rfs.call(el);
+    var el = document.documentElement;
+    if (isFullScreen) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.mozCancelFullScreen) { /* Firefox */
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) { /* IE/Edge */
+            document.msExitFullscreen();
+          }
+    } else {
+        var fs = el.requestFullscreen
+          || el.webkitRequestFullScreen
+          || el.mozRequestFullScreen
+          || el.msRequestFullscreen;
+        fs.call(el);
+    }
+    isFullScreen = !isFullScreen;
+    $('#fullscreen-toggle').button('toggle');
 }
 
 function togglePaging() {

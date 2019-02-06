@@ -6,10 +6,11 @@ from django.core.paginator import Paginator
 from datetime import date
 
 from .models import WorkOrder
-from .app_config import config
+from .models import AppConfig
 
 def index(request):
     workorders = WorkOrder.objects.order_by('due_date')
+    config = get_app_config()
 
     today = date.today()
     for i in range(len(workorders)):
@@ -36,6 +37,7 @@ def index(request):
         'total_num_pages'  : num_pages,
         'next_page'        : get_next_page(page, num_pages),
         'refresh_rate'     : config['REFRESH_RATE'],
+        'row_height'       : (str((100 / config['ROWS_PER_PAGE'])) + '%') or '25%',
         'debug'            : config['DEBUG']
     }
 
@@ -52,3 +54,22 @@ def workorder_mockup(request):
 def get_next_page(current_page, total_pages):
     next_page = (int(current_page) % int(total_pages)) + 1
     return str(next_page)
+
+def get_app_config():
+    app_config_table = AppConfig.objects.all()
+    if len(app_config_table):
+        app_config = AppConfig.objects.get(id=1)
+        config = {
+            'ROWS_PER_PAGE' : app_config.rows_per_page,
+            'DAYS_URGENT_WITHIN' : app_config.days_urgent_within,
+            'REFRESH_RATE' : app_config.refresh_rate_seconds * 1000,
+            'DEBUG' : app_config.debug
+        }   
+    else:
+        config = {
+            'ROWS_PER_PAGE' : 4,
+            'DAYS_URGENT_WITHIN' : 30,
+            'REFRESH_RATE' : 7000,
+            'DEBUG' : False
+        }
+    return config

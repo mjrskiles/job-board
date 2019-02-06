@@ -11,3 +11,12 @@ class WorkOrder(models.Model):
     machine_size = models.IntegerField(default=0)
     machine_type = models.CharField(max_length=200)
     due_date = models.DateField(default=datetime.date.today)
+
+class AppConfig(models.Model):
+    def __str__(self):
+        return 'App Configuration'
+
+    days_urgent_within = models.IntegerField(default=15)
+    refresh_rate_seconds = models.IntegerField(default=7)
+    rows_per_page = models.IntegerField(default=4)
+    debug = models.BooleanField(default=False)
