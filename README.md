@@ -11,11 +11,9 @@ To start the test server and make it available to other machines on the network,
 
 `python3 manage.py runserver 0.0.0.0:8000`
 
-I set up a mock up page that can be used for testing layout ideas. it is available at the path /workorders/mockup
+Open a browser and go to `localhost:8000` to view the app.
 
-for example:
-
-127.0.0.1:8000/workorders/mockup
+Go to `localhost:8000/admin` to enter/manage jobs.
 
 ## How to build this project
 ---
@@ -33,11 +31,11 @@ The project is set up to use a virtual python environment to manage package depe
 
 On the pi the virtual environment is located at
 
-`~/projects/envs/shopdisplayenv/`
+`<project directory>/env`
 
-The environment can be activated by running the shell command
+The environment can be activated by running from the project directory the shell command
 
-`source ~/projects/envs/shopdisplayenv/bin/activate`
+`source ./env/bin/activate`
 
 The environment can be deactivated at any time with
 
@@ -70,21 +68,13 @@ If you are going to use a virtual environment, you also need the package virtual
 From the command line:
 
 - Navigate to the folder that you would like to place your project folder in
-- `git clone https://github.com/ConvertingSystemsInc/shop_display.git`
-- `cd shop_display`
-
--- Optional steps if using a virtual environment --
-
-- `virtualenv shopdisplayenv`
-    - This step creates a virtual environment called shopdisplayenv
-    - Optionally, you might choose to locate your virtual environments in a centralized place outside of the project folder. It doesn't matter which way you do it. Just don't add the virtualenv files to the git repo if you do choose to do it inside the project folder.
-
-- `source shopdisplayenv/bin/activate`
-    - (or the location of your env if you placed it somewhere else)
-
--- End optional steps --
-
-- `pip3 install -r requirements.txt`
+    - `git clone https://github.com/mjrskiles/job-board.git`
+    - `cd job-board`
+    - `pip3 install -r requirements.txt`
+    - `python3 -m virtualenv env`
+    - `source env/bin/activate`
+    - `python3 manage.py migrate`
+    - Then you can run using the instructions at the top
 
 At this point, the project should be ready to run. For help with django, see the django documentation.
 
