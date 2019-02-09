@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'raspberrypi.local',
     '127.0.0.1',
+    'localhost'
 ]
 
 
